@@ -1,0 +1,230 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #d9d9d9;
+  }
+
+  h2, h3 {
+    color:#16151b;
+    font-family: 'Oswald', sans-serif;
+    font-weight:500;
+    text-transform:uppercase;
+    margin: 30px;
+    letter-spacing:1px;
+
+  }
+
+  h4 {
+    color:#16151b;
+    font-family: 'Oswald', sans-serif;
+    font-weight:500;
+    margin: 30px;
+    letter-spacing:1px;
+  }
+
+
+
+
+ /* Navbar and background image */
+
+ @import url('https://fonts.googleapis.com/css?family=Oswald:500');
+
+.thx{
+  position: fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom: 15px;
+}
+nav{
+  width: 100%;
+  position: fixed;
+  top:50px;
+  text-align:center;
+}
+nav a{
+  font-family: 'Oswald', sans-serif;
+  font-weight:500;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:#16151b;
+  margin:0 15px;
+  font-size:16px;
+  letter-spacing:1px;
+  position:relative;
+  display:inline-block;
+}
+nav a:before{
+  content:'';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background:#16151b;
+  top:47%;
+  animation:out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+}
+nav a:hover:before{
+  animation:in 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+
+}
+@keyframes in{
+  0%{
+    width: 0;
+    left:0;
+    right:auto;
+  }
+  100%{
+    left:0;
+    right:auto;
+    width: 100%;
+  }
+}
+@keyframes out{
+  0%{
+    width:100%;
+    left: auto;
+    right: 0;
+  }
+  100%{
+    width: 0;
+    left: auto;
+    right: 0;
+  }
+}
+@keyframes show{
+  0%{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+
+
+/* Game Window */ 
+
+canvas {
+  margin-left: 300px;
+  border: black solid 10px; 
+}
+
+
+
+/*  About Me */ 
+
+
+
+
+#aboutme { 
+	height: 110vh;
+	padding-top: 50px;
+	text-align: center;
+	background: #f7f7f7;
+	position: relative;
+	top: 300px;
+}
+
+#aboutme h2 {
+	letter-spacing: 12px;
+	font-size: 3em;
+	margin-bottom: 100px;
+	margin-top: 100px;
+}
+
+#aboutme h3 {
+	line-height: 40px;
+	vertical-align: middle;
+}
+
+/*end of aboutme styling*/
+
+
+.img {
+  height:521px;
+  width: 292px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+#socialimg {
+  height:50px;
+  width: 50px;
+}
+
+/* Why RV Cards */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.card {
+  width: 30%;
+  max-width: 230px;
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 100px;
+  margin-top: 100px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 16px;
+  color: #666;
+}
+
+/* envelope */
+
+.envelope {
+  position: relative;
+  width: 200px;
+  height: 120px;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-top: none;
+  left: 380px;
+  margin-bottom:100px;
+}
+
+.envelope:before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 50px 100px 0 100px;
+  border-color: #000 transparent transparent transparent;
+}
+
+.paper {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #fff;
+  border-top: 1px solid #000;
+  padding: 10px;
+  display: none;
+}
+
+.envelope:hover .paper {
+  display: block;
+}

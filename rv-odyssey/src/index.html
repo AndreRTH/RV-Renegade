@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <script src="https://cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser-arcade-physics.min.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Red Ventures Odyssey</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser-arcade-physics.min.js"></script>
+    </head>
 
 <body>
-    <h1>Red Ventures Odyssey!</h1>
+     
+    <nav>
+        <a href="./index.html">Home</a>
+        <a href="./about.html">About</a>
+        <a href="./whyrv.html">Why RV?</a>
+    </nav>
+    
+    <h2>Red Ventures Odyssey!</h2>
     <script>
         // Create a new scene 
         let gameScene = new Phaser.Scene('Game'); 
@@ -20,14 +30,17 @@
 
         // Called once after preload ends 
         gameScene.create = function(){
+            // Add physics to the scene
+            this.physics.add.existing(this);
+
             // Create sprite 
             let outside = this.add.sprite(0, 0, 'outside');
-            let mcIdle = this.add.sprite(5,430,'mcIdle');
-            let bug = this.add.sprite(50,50,'bug');
+            let mcIdle = this.physics.add.sprite(0, 430, 'mcIdle');
+            let bug = this.add.sprite(50, 50, 'bug');
             
             // Set the sprite origin to the top-left corner
-            outside.setOrigin(0, 0);
-            mcIdle.setOrigin(0,0);
+            outside.setOrigin(0,0);
+            mcIdle.setOrigin(0, 0);
 
             // Get the game canvas dimensions
             const gameWidth = this.sys.game.config.width;
@@ -40,24 +53,50 @@
             // Scale the sprite
             outside.setScale(scaleX, scaleY);
 
-            // Add keyboard input for left and right arrow keys
+            // Add keyboard input for left, right, and up arrow keys
             this.leftKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
             this.rightKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+            this.jumpKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
 
             // Set the mcIdle object as a property of the scene
             this.mcIdle = mcIdle;
+
+            // Set the collider with the world bounds
+            mcIdle.setCollideWorldBounds(true);
+
+            // Set the gravity
+            this.physics.world.gravity.y = 900;
+
+            //Set World Boundaries, don't touch this 
+            this.physics.world.setBounds(-500, 100, 10,500, 0, false,true);
+
+            // this.cameras.main.startFollow(this.mcIdle);
+            
+            
+
+            
         }
 
         // Update loop
         gameScene.update = function() {
             // Check if the left arrow key is being pressed
             if (this.leftKey.isDown) {
-                this.mcIdle.x -= 5; // Move mcIdle left
+                this.mcIdle.setVelocityX(-300); // Move mcIdle left
             }
 
             // Check if the right arrow key is being pressed
-            if (this.rightKey.isDown) {
-                this.mcIdle.x += 5; // Move mcIdle right
+            else if (this.rightKey.isDown) {
+                this.mcIdle.setVelocityX(300); // Move mcIdle right
+            }
+
+            // If no left/right keys are pressed, stop mcIdle
+            else {
+                this.mcIdle.setVelocityX(0);
+            }
+
+            // Check if the jump key is being pressed and mcIdle is touching the ground
+            if (this.jumpKey.isDown && this.mcIdle.body.blocked.down) {
+                this.mcIdle.setVelocityY(-500); // Make mcIdle jump
             }
         }
 
@@ -66,7 +105,13 @@
             type: Phaser.AUTO, 
             width: 800, 
             height: 600, 
-            scene: gameScene
+            scene: gameScene,
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    debug: false
+                }
+            }
         };
 
         // Create a new game and pass the configuration 
