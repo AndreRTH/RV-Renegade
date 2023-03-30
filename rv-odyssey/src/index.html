@@ -26,6 +26,10 @@
             this.load.image('outside', 'https://i.ibb.co/4sKZq6L/outside.png');
             this.load.image('mcIdle','https://i.ibb.co/HDYtmw6/mc-idle-static.png');
             this.load.image('bug','https://i.ibb.co/p1Lcbwq/bug.png');
+            this.load.image('platform', 'https://i.ibb.co/0VDqWp6/platform.png');
+            this.load.image('skeleton','https://i.ibb.co/Y2fPysS/skeleton.png');
+
+            
         };
 
         // Called once after preload ends 
@@ -35,12 +39,23 @@
 
             // Create sprite 
             let outside = this.add.sprite(0, 0, 'outside');
-            let mcIdle = this.physics.add.sprite(0, 430, 'mcIdle');
             let bug = this.add.sprite(50, 50, 'bug');
+            let mcIdle = this.physics.add.sprite(0, 430, 'mcIdle');
+            let skeleton = this.add.sprite(100,530,'skeleton');
+            
             
             // Set the sprite origin to the top-left corner
             outside.setOrigin(0,0);
             mcIdle.setOrigin(0, 0);
+
+            // Create platforms group with physics enabled
+            platforms = this.physics.add.staticGroup();
+
+
+            // Add a platform to the platforms group
+            platforms.create(40, 450, 'platform');
+            
+            
 
             // Get the game canvas dimensions
             const gameWidth = this.sys.game.config.width;
@@ -67,11 +82,9 @@
             // Set the gravity
             this.physics.world.gravity.y = 900;
 
-            //Set World Boundaries, don't touch this 
-            this.physics.world.setBounds(-500, 100, 10,500, 0, false,true);
+            // Set World Boundaries
+            this.physics.world.setBounds(-500, 100, 10, 500, 0, false, true);
 
-            // this.cameras.main.startFollow(this.mcIdle);
-            
             
 
             
@@ -82,11 +95,13 @@
             // Check if the left arrow key is being pressed
             if (this.leftKey.isDown) {
                 this.mcIdle.setVelocityX(-300); // Move mcIdle left
+                this.mcIdle.flipX = true;
             }
 
             // Check if the right arrow key is being pressed
             else if (this.rightKey.isDown) {
                 this.mcIdle.setVelocityX(300); // Move mcIdle right
+                this.mcIdle.flipX = false;
             }
 
             // If no left/right keys are pressed, stop mcIdle
@@ -98,6 +113,8 @@
             if (this.jumpKey.isDown && this.mcIdle.body.blocked.down) {
                 this.mcIdle.setVelocityY(-500); // Make mcIdle jump
             }
+
+            
         }
 
         // Set the configuration for the scene 
