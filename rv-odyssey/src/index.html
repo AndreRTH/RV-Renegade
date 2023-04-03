@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Red Ventures Odyssey</title>
+        <title>Red Ventures Renegade</title>
         <link rel="stylesheet" href="style.css">
         <script src="https://cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser-arcade-physics.min.js"></script>
     </head>
@@ -13,9 +13,14 @@
         <a href="./index.html">Home</a>
         <a href="./about.html">About</a>
         <a href="./whyrv.html">Why RV?</a>
+        <a href="../src/ecommerce-v1/index.html">E-Commerce V1</a>
     </nav>
     
-    <h2>Red Ventures Odyssey!</h2>
+    <h2>Red Ventures Renegade!</h2>
+    <audio controls>
+        <source src="./audio/music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
     <script>
         // Create a new scene 
         let gameScene = new Phaser.Scene('Game'); 
@@ -86,7 +91,6 @@
             this.physics.world.setBounds(-500, 100, 10, 500, 0, false, true);
 
             
-
             
         }
 
@@ -113,6 +117,8 @@
             if (this.jumpKey.isDown && this.mcIdle.body.blocked.down) {
                 this.mcIdle.setVelocityY(-500); // Make mcIdle jump
             }
+
+            
 
             
         }

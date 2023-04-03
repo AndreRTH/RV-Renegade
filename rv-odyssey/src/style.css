@@ -228,3 +228,9 @@ canvas {
 .envelope:hover .paper {
   display: block;
 }
+
+audio {
+  position: absolute;
+  top: 100px;
+  left: 0px;
+}

@@ -1,0 +1,215 @@
+/* ---------------------------------------------------------------------------------------------
+    The Whole Page
+    ------------------------------------------------------------------------------------------ */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+    background-color: #7F3825;
+}
+
+/* ---------------------------------------------------------------------------------------------
+    The NavBar
+    ------------------------------------------------------------------------------------------ */
+
+#logo {
+    height:50px;
+    width:50px;
+}
+
+
+header {
+	background-color: #5A352A;
+	padding: 30px;
+    margin:30px;
+}
+
+nav ul {
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	padding: 10px;
+	transition: all 0.2s ease-in-out;
+}
+
+nav ul li a:hover {
+	color: #666;
+}
+
+/* ---------------------------------------------------------------------------------------------
+    The Carousel
+    ------------------------------------------------------------------------------------------ */
+
+
+
+main {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.carousel {
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.slides {
+	display: flex;
+	flex-wrap: nowrap;
+	transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+	flex: 1 0 100%;
+	margin-right: 10px;
+}
+
+.slide img {
+	width: 100%;
+	height: 100%
+}
+
+.buttons {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+button {
+	background-color: #333;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+	background-color: #666;
+}
+
+.prev {
+	margin-left: 10px;
+}
+
+/* ---------------------------------------------------------------------------------------------
+    The Products
+    ------------------------------------------------------------------------------------------ */
+
+.products {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-bottom: 30px;
+}
+
+.product {
+	flex: 1 0 calc(33.33% - 10px);
+	margin-bottom: 20px;
+	background-color: #A45A42;
+	padding: 10px;
+	text-align: center;
+}
+
+.product img {
+	width: 100%;
+	height: auto;
+	margin-bottom: 10px;
+}
+
+.product h3 {
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+.product p {
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+
+button {
+	background-color: #333;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+	background-color: #666;
+}
+
+/* ---------------------------------------------------------------------------------------------
+    The Testimonials
+    ------------------------------------------------------------------------------------------ */
+
+.testimonials {
+	margin-bottom: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    
+}
+
+.testimonials h2 {
+	font-size: 24px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.testimonial {
+	background-color: #A45A42;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.testimonial p {
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+
+.testimonial p:last-child {
+	font-weight: bold;
+}
+
+/* ---------------------------------------------------------------------------------------------
+    The Footer
+    ------------------------------------------------------------------------------------------ */
+
+footer {
+	background-color: #5A352A;
+	color: #fff;
+	padding: 10px;
+	text-align: center;
+}
+
+footer p {
+	margin: 0;
+	font-size: 14px;
+}
+
+.socialimg {
+    height:50px;
+    width: 50px;
+    margin:10px;
+}
